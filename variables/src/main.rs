@@ -1,12 +1,18 @@
-fn main() {
-    let x = 5;
+use std::thread;
+use std::time::Duration;
 
-    let x = x + 1;
+fn main () {
+    let simulated_user_specified_value = 10;
+    let simulated_random_number = 7;
 
-    {
-        let x = x * 2;
-        println!("The value of x in the inner scope is: {}", x);
-    }
-    
-    println!("The value of x is: {}", x);
+    renerate_workout(
+        simulated_user_specified_value,
+        simulated_random_number
+    );
+}
+
+fn simulated_expensive_calculation(intensity: u32) -> u32 {
+    println!("calculating slowly...");
+    thread::sleep(Duration::from_secs(2));
+    intensity
 }
